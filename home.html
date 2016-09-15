@@ -1,0 +1,145 @@
+<html>
+ <head><title>CARAC</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1.0">
+ </head> 
+ <link href="a.png" rel="shortcut icon" type="image/png" >
+
+<script type="text/javascript">
+var xhttp = new XMLHttpRequest();
+function search(str){
+      xhttp.onreadystatechange=function(){
+       if(xhttp.readyState == 4 && xhttp.status == 200)
+       {     
+             document.getElementById("dropitems").innerHTML=xhttp.responseText;
+       }
+    };
+    xhttp.open("GET","search.php?name="+str,true);
+    xhttp.send();
+}
+</script>
+<style type="text/css">
+
+*{
+    margin:0px;
+    padding:0px;
+}
+.result{
+  text-decoration:none;
+  padding-top:3px;
+  margin-top:1px;
+  border:1px solid white;
+  color:black;
+  display:block;
+  text-align:left;
+
+  padding-left:20px;
+  margin-left:-70px;
+  width:200px;
+  height:20px;
+  background-color:#eee;
+  
+}
+#body{
+    background-color:#f1f1f1;
+}
+#cover{
+    
+display:block;
+min-height:480px;
+height:100%;
+background-image:url("a.jpg");
+background-size:100% 100%;
+
+}
+#box{
+    display:block;
+    position:fixed;
+    top:300px;
+    width:100%;
+    height:30px;
+    margin-top:-100px;
+    padding-top:8px;
+    border-radius:20px;   
+}
+#button{
+     border:none;
+     color:white;
+     width:70px;
+     height:40px;
+     margin-left:-74px;
+     background-color:rgba(0,190,0,1);
+     background-image:url("");
+     background-size:60% 80%;
+     background-position:center;
+     background-repeat:no-repeat;
+     border-top-right-radius:20px;
+     border-bottom-right-radius:20px;
+     
+}
+#button:focus{
+    outline:none;
+}
+#text{
+    border:none;
+     width:290px;
+     height:40px;
+     color:black;
+     font-style:italic;
+     border-radius:20px;
+     
+     padding-left:20px;
+     background-color:rgba(255,255,255,0.8);
+}
+#text:focus{
+    outline:none;
+}
+#menu{
+  display:block;
+  background-color:rgba(0,0,0,0.5);
+  height:40px;
+  padding-top:10px;
+  padding-left:20px;
+  width:100%;
+  color:white;
+  position:fixed;
+  top:0px; 
+}
+
+#drop{
+    position:relative;
+}
+
+#dropitems{
+    color:white;
+}
+
+#drop #dropitems{
+    display:block;
+    color:white;
+}
+
+</style>
+
+<body id="body">
+    <div id="menu">
+     <h2> <img src="a.png" width="50px" > CARAC </h2>
+    </div>
+    <div id="cover">
+      
+    </div>
+    <hr/>
+    <div id="wrap" align="center">
+    <div id="box">
+        <form action="car_profile.php" method="POST" >
+        <div id="drop">
+        <input type="text" id="text" name="username" value="" placeholder="Enter Car Name !!" onkeyup="search(this.value);" autocomplete="off" required>
+        <input type="submit"  value="Search" id="button">
+        <div id="dropitems">
+            
+        </div>
+        </div>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
